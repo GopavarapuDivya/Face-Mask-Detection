@@ -1,0 +1,6 @@
+tensorflow
+flask
+keras
+imutils
+cv2
+werkzeug.utils
