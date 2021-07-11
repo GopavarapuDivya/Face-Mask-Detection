@@ -12,7 +12,6 @@ from imutils.video import VideoStream
 import imutils
 import time
 import cv2
-
 from werkzeug.utils import secure_filename
 app = Flask(__name__)
 run_with_ngrok(app)
@@ -34,8 +33,8 @@ def index():
 @app.route('/help')
 def form():
     return render_template('help.html')
-@app.route('/upload', methods=["GET","POST"])
-def upload():
+@app.route('/predict', methods=["GET","POST"])
+def predict():
     if request.method == 'POST':
         file = request.files['image_file']
         basepath=os.path.dirname(__file__)
@@ -50,7 +49,7 @@ def upload():
             return render_template('withmask.html',filename=filename)
     return None
 
-@app.route('/upload/<filename>')
+@app.route('/predict/<filename>')
 def send_image(filename):
     #print('display_image filename: ' + filename)
     return send_from_directory("uploads", filename)
