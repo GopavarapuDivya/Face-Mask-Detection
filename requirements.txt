@@ -1,6 +1,7 @@
-tensorflow
+tensorflow==2.4.1
 flask
 keras
 imutils
-cv2
-werkzeug.utils
+opencv-python
+flask_ngrok
+pillow

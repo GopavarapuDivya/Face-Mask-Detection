@@ -7,10 +7,8 @@ from keras.preprocessing import image
 from flask_ngrok import run_with_ngrok
 from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 from tensorflow.keras.preprocessing.image import img_to_array
-from tensorflow.keras.models import load_model
 from imutils.video import VideoStream
 import imutils
-import time
 import cv2
 from werkzeug.utils import secure_filename
 app = Flask(__name__)
@@ -158,6 +156,7 @@ def face_detect():
     # do a bit of cleanup
     cv2.destroyAllWindows()
     vs.stop()
+    return "stopped successfuly"
 if __name__ == '__main__':
           app.run()
           
