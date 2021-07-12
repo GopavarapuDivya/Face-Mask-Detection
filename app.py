@@ -4,7 +4,6 @@ from tensorflow.keras.models import load_model
 import numpy as np
 from flask import Flask, request, redirect, url_for, send_from_directory,render_template
 from keras.preprocessing import image
-from flask_ngrok import run_with_ngrok
 from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
 from tensorflow.keras.preprocessing.image import img_to_array
 from imutils.video import VideoStream
@@ -12,7 +11,6 @@ import imutils
 import cv2
 from werkzeug.utils import secure_filename
 app = Flask(__name__)
-run_with_ngrok(app)
 #model=tk.load_model("mask_detector.h5")
 #model.encode().decode()
 model_path="models/mymodel.h5"

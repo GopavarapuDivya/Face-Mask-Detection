@@ -3,5 +3,4 @@ flask
 keras
 imutils
 opencv-python
-flask_ngrok
 pillow
