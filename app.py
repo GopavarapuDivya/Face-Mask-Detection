@@ -35,7 +35,7 @@ def predict():
         file = request.files['image_file']
         basepath=os.path.dirname(__file__)
         filename=secure_filename(file.filename)
-        filepath=os.path.join(basepath,'uploads/',file.filename)
+        filepath=os.path.join(basepath,'upload/',file.filename)
         file.save(filepath)
         print(filepath)
         livepreds = model_predict(filepath,model)
@@ -48,7 +48,7 @@ def predict():
 @app.route('/predict/<filename>')
 def send_image(filename):
     #print('display_image filename: ' + filename)
-    return send_from_directory("uploads", filename)
+    return send_from_directory("upload", filename)
 
 def detect_and_predict_mask(frame, faceNet, maskNet):
 	# grab the dimensions of the frame and then construct a blob
