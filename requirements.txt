@@ -1,0 +1,6 @@
+tensorflow==2.4.1
+flask
+keras
+imutils
+opencv-python
+pillow
