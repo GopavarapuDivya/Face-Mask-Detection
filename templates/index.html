@@ -1,13 +1,11 @@
 <html>
 <head>
-
 <style>
 *{
   margin: 0px;
   padding: 0px;
 }
 .header {
-  overflow: hidden;
   background-color: #606060;
   color : white;
   font-size : 20px;
@@ -15,8 +13,11 @@
   height: 60px;
   padding: 20px 10px;
 }
+html, body {
+   max-width: 100%;
+   overflow-x: hidden;
 
-/* Style the header links */
+}
 .header a {
   float: left;
   color: white;
@@ -28,38 +29,22 @@
   border-radius: 4px;
 }
 
-/* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
 .header a.logo {
-  font-size: 25px;
+  font-size: 30px;
   font-weight: bold;
 }
 
-/* Style the active/current link*/
 .header a.active {
   background-color: dodgerblue;
   color: white;
 }
-
-/* Float the link section to the right */
 .header-right {
   float: right;
 }
 
-/* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
-@media screen and (max-width: 500px) {
-  .header a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-  .header-right {
-    float: none;
-  }
-}
-
 .card
 {
-	width : 400px;
+	width : 450px;
 	height : 230px;
 	margin-top : 15px;
 	border-style: dashed;
@@ -70,9 +55,7 @@
 	padding-left : 70px;
 	padding-top : 40px;
 	width : 350px;
-
 }
-
 input[type=button], input[type=submit], input[type=reset] {
 	 background: #0066A2;
      color: white;
@@ -115,14 +98,21 @@ ul li.active a{
     background-color: #fff;
     color:#000;
 }
+@media screen and (max-width: 500px) {
+  .header a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .header-right {
+    float: none;
+  }
+}
 </style>
 </head>
 <body>
 <div class="header">
   <a href="#default" class="logo">Face Mask Detection</a>
-  <div class="header-right">
-    <a href="/help">Contact</a>
-  </div>
 </div>
 </br>
 </br>
@@ -131,7 +121,7 @@ ul li.active a{
 <form action = "{{url_for('predict')}}" enctype="multipart/form-data" method = "POST">
 <div class = "card">
 		<h1 class="line">Mask Detector</h1>
-		<input class="input100"  type="file" placeholder="upload a image" name="image_file" />
+		<input class="input100"  type="file" placeholder="upload a image" name="image_file" accept=" .png, .jpg, .jpeg, .jfif"/>
 		<!-- <textarea class="input100" name="message" placeholder="Your message here..."></textarea> -->
 		<span class="focus-input100"></span>
 		</br>
@@ -139,6 +129,6 @@ ul li.active a{
 </div>
 </form>
 <br>
-<a href = "face"><h3 color="black">Go with Live Video</h3></a>
+<a href = "/live"><h2 color="black">Go with Live Video</h2></a>
 </body>
 </html>
