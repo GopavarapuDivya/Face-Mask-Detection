@@ -6,10 +6,9 @@ from keras.preprocessing import image
 import cv2
 from werkzeug.utils import secure_filename
 app = Flask(__name__)
-face_classifier = cv2.CascadeClassifier('models/haarcascade_frontalface_default.xml')
-model_path="models/mymodel.h5"
-classifier=load_model('models/mymodel.h5')
-class_labels = ['Mask','No Mask']
+face_classifier = cv2.CascadeClassifier('model/variables/stream_faceclassifier.xml')
+model_path="model/facemodel.h5"
+classifier=load_model('model/facemodel.h5')
 ds_factor=0.6
 model=load_model(model_path,compile=False)
 def model_predict(img_path, model):
@@ -62,7 +61,6 @@ def video_feed():
 class VideoCamera(object):
     def __init__(self):
         self.video = cv2.VideoCapture(0)
-
     def __del__(self):
         self.video.release()
     def get_frame(self):
@@ -83,8 +81,6 @@ class VideoCamera(object):
                 cv2.putText(img,'MASK',((x+w)//2,y+h+20),cv2.FONT_HERSHEY_SIMPLEX,1,(0,255,0),3)
         ret,jpeg = cv2.imencode('.jpg',img)
         return jpeg.tobytes()
-
-
 if __name__ == '__main__':
           app.run()
           

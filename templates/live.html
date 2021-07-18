@@ -22,7 +22,7 @@ html, body {
   padding: 20px 10px;
 }
 
-/* Style the header links */
+
 .header a {
   float: left;
   color: white;
@@ -34,24 +34,22 @@ html, body {
   border-radius: 4px;
 }
 
-/* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
+
 .header a.logo {
   font-size: 25px;
   font-weight: bold;
 }
 
-/* Style the active/current link*/
+
 .header a.active {
   background-color: dodgerblue;
   color: white;
 }
 
-/* Float the link section to the right */
+
 .header-right {
   float: right;
-}
 
-/* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
 @media screen and (max-width: 500px) {
   .header a {
     float: none;
@@ -77,13 +75,11 @@ font-size : 25px;
 </div>
 </br>
 </br>
-</br>
 <div>
 <center>
             <h1>Live Facial Mask Detection</h1>
 			</br>
-			</br>
-            <img src="{{ url_for('video_feed') }}" width="600px",height="600px">
+            <img src="{{ url_for('video_feed') }}" width="500px",height="500px">
 </center>
 </div>
 </body>
