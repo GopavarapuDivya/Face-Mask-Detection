@@ -6,7 +6,7 @@ from keras.preprocessing import image
 import cv2
 from werkzeug.utils import secure_filename
 app = Flask(__name__)
-face_classifier = cv2.CascadeClassifier('model/variables/stream_faceclassifier.xml')
+face_classifier = cv2.CascadeClassifier('model/stream_faceclassifier.xml')
 model_path="model/facemodel.h5"
 classifier=load_model('model/facemodel.h5')
 ds_factor=0.6
