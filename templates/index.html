@@ -87,7 +87,7 @@ input[type=button], input[type=submit], input[type=reset] {
      width: 100px;
      font: bold 15px arial, sans-serif;
      text-shadow:none;
-	 margin-top : 45px;
+	 margin-top : 35px;
 }
 .line
 { 
@@ -122,7 +122,23 @@ p{
 	font-size :20px;
 
 }
+input[type="submit"]
+{
+	
+	margin-top : 20px;
+	height: 30px;
+    width: 60px;
 
+}
+.line{
+font-size :15px;
+font-weight : bold;
+}
+.header
+{
+	height : 30px;
+
+}
 }
 
 html,body{
@@ -154,7 +170,9 @@ html,body{
 				if (extFile=="jpg" || extFile=="jpeg" || extFile=="png" || extFile==".jfif"){
 				}else{
 					alert("Only jpg/jpeg/jfif and png files are allowed!");
-				}   
+					document.getElementById("fileName").value=null;
+				} 
+				
 			}
 		</script>
 		<span class="focus-input100"></span>
