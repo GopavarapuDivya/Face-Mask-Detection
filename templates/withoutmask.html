@@ -6,11 +6,6 @@
   margin: 0px;
   padding: 0px;
 }
-html, body {
-   max-width: 100%;
-   overflow-x: hidden;
-
-}
 .header {
   overflow: hidden;
   background-color: #606060;
@@ -21,7 +16,7 @@ html, body {
   padding: 20px 10px;
 }
 
-
+/* Style the header links */
 .header a {
   float: left;
   color: white;
@@ -33,26 +28,63 @@ html, body {
   border-radius: 4px;
 }
 
-
+/* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
 .header a.logo {
   font-size: 25px;
   font-weight: bold;
 }
 
-
-
-.header a.active {
-  background-color: dodgerblue;
-  color: white;
-}
-
-
+/* Float the link section to the right */
 .header-right {
   float: right;
 }
 
+img
+{
+    margin-top: 100px;
+	width : 40%;
+	height : 350px;
+}
+p{
+font-size : 40px;
+}
+
+html,body{
+	max-width:100%;
+	overflow-x:hidden;
+	}
+
+/* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
+
+@media screen and (max-width: 1200px) {
+  img {
+    margin-top: 50px;
+    width:80%;
+    height: 300px;
+  }
+  p{
+    font-size: 40px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  img {
+    margin-top: 50px;
+    width:80%;
+  }
+  p{
+    font-size: 40px;
+  }
+}
 
 @media screen and (max-width: 500px) {
+  img {
+    margin-top: 50px;
+    width:95%;
+  }
+  .header {
+    height: 15%;
+  }
   .header a {
     float: none;
     display: block;
@@ -61,36 +93,33 @@ html, body {
   .header-right {
     float: none;
   }
+  p{
+    font-size: 25px;
+  }
+}
+@media screen and (max-width: 280px) {
+
+.face
+{
+	font-size :20px;
+
 }
 
-img
-{
-	width : 300px;
-	height : 300px;
-}
-p{
-font-size : 28px;
 }
 </style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 <div class="header">
-  <a href="#default" class="logo">Face Mask Detection</a>
+  <a href="#default" class="logo"><p class="face">Face Mask Detection</p></a>
   <div class="header-right">
-	<a href="/">Home</a>
   </div>
 </div>
-</br>
-</br>
-</br>
-</br></br>
-</br>
-</br>
 <center>
 <img src="{{ url_for('send_image', filename=filename) }}">
 </br>
 </br>
-<p> Person is not wearing mask</p>
+<p>Person is not wearing mask</p>
 </br>
 </center>
 </body>

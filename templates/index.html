@@ -6,56 +6,79 @@
   margin: 0px;
   padding: 0px;
 }
+
 .header {
+  overflow: hidden;
   background-color: #606060;
   color : white;
-  font-size : 20px;
   font-family : Arial;
   height: 60px;
   padding: 20px 10px;
 }
-html, body {
-   max-width: 100%;
-   overflow-x: hidden;
+
+.card
+{
+	width : 30%;
+    margin: auto;
+	height : 250px;
+	margin-top : 15px;
+	border-style: dashed;
+	border-color : #E0E0E0;	
 }
+
+/* Style the header links */
 .header a {
   float: left;
   color: white;
   text-align: center;
   padding: 12px;
   text-decoration: none;
-  font-size: 18px;
+  font-size: 35px;
   line-height: 25px;
-  border-radius: 4px;
 }
 
+/* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
 .header a.logo {
-  font-size: 30px;
+  font-size: 25px;
   font-weight: bold;
 }
 
-.header a.active {
-  background-color: dodgerblue;
-  color: white;
-}
-.header-right {
-  float: right;
+/* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
+
+@media screen and (max-width: 980px) {
+  .card
+{
+	width : 75%;
 }
 
-.card
-{
-	width : 650px;
-	height : 250px;
-	margin-top : 15px;
-	border-style: dashed;
-	border-color : #E0E0E0;	
 }
+
+@media screen and (max-width: 280px) {
+  .header a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .header {
+    height: 15%;
+  }
+  .header-right {
+    float: none;
+  }
+  .card
+{
+	width : 95%;
+}
+}
+
 .input100
 {
-	padding-left : 70px;
+	padding-left : 20px;
 	padding-top : 40px;
 	width : 350px;
+	font-size : 13px;
 }
+
 input[type=button], input[type=submit], input[type=reset] {
 	 background: #0066A2;
      color: white;
@@ -68,51 +91,52 @@ input[type=button], input[type=submit], input[type=reset] {
 }
 .line
 { 
-	color : black;
-	padding-top : 5px;
-	font-family : century gothic;
-
+	color : #6666FF;
+	padding-top : 20px;
 }
 p{
-font-size : 25px;
+	font-size : 25px;
+	font-weight : bold;
 }
-ul{
-    float: right;
-    list-style-type: none;
+@media screen and (max-width: 1100px) {
+  .card
+{
+	width : 75%;
 }
-ul li{
-    display: inline-block;
+
 }
-ul li a{
-    text-decoration: none;
-    color: red;
-    padding: 5px 20px;
-    border: 1px solid transparent;
+@media screen and (min-width: 360px) {
+
+.input100
+{
+	font-size : 20px;
+
 }
-ul li a:hover{
-    background-color: #fff;
-    color:#000;
-    transition: 0.6s ease;
+
 }
-ul li.active a{
-    background-color: #fff;
-    color:#000;
+
+@media screen and (max-width: 280px) {
+
+.face
+{
+	font-size :20px;
+
 }
-@media screen and (max-width: 500px) {
-  .header a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
-  .header-right {
-    float: none;
-  }
+
 }
+
+html,body{
+	max-width:100%;
+	overflow-x:hidden;
+	}
+
+
 </style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 <div class="header">
-  <a href="#default" class="logo">Face Mask Detection</a>
+  <a href="#default" class="logo"><p class="face">Face Mask Detection</p></a>
 </div>
 </br>
 </br>
@@ -121,14 +145,26 @@ ul li.active a{
 <form action = "{{url_for('predict')}}" enctype="multipart/form-data" method = "POST">
 <div class = "card">
 		<h1 class="line">Mask Detector</h1>
-		<input class="input100"  type="file" placeholder="upload a image" name="image_file" accept=" .png, .jpg, .jpeg, .jfif"/>
-		<!-- <textarea class="input100" name="message" placeholder="Your message here..."></textarea> -->
+		<input class="input100"  type="file" id="fileName" accept=".png, .jpg, .jpeg , .jfif" onchange="validateFileType()" name="image_file"/>
+		<script type="text/javascript">
+			function validateFileType(){
+				var fileName = document.getElementById("fileName").value;
+				var idxDot = fileName.lastIndexOf(".") + 1;
+				var extFile = fileName.substr(idxDot, fileName.length).toLowerCase();
+				if (extFile=="jpg" || extFile=="jpeg" || extFile=="png" || extFile==".jfif"){
+				}else{
+					alert("Only jpg/jpeg/jfif and png files are allowed!");
+				}   
+			}
+		</script>
 		<span class="focus-input100"></span>
 		</br>
 		<input type="submit" value="Predict!" align="center-right">
 </div>
 </form>
-<br>
-<a href = "/live"><h2 color="black">Go with Live Video</h2></a>
+</br>
+</br>
+<a href = "/live"><p color="black">Go with Live Video</p></a>
+</center>
 </body>
 </html>

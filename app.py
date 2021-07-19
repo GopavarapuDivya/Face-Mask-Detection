@@ -4,11 +4,12 @@ import numpy as np
 from flask import Flask, request, send_from_directory,render_template,Response
 from keras.preprocessing import image
 import cv2
+import os
 from werkzeug.utils import secure_filename
 app = Flask(__name__)
 face_classifier = cv2.CascadeClassifier('model/stream_faceclassifier.xml')
-model_path="model/facemodel.h5"
-classifier=load_model('model/facemodel.h5')
+model_path="model/model.h5"
+classifier=load_model('model/model.h5')
 ds_factor=0.6
 model=load_model(model_path,compile=False)
 def model_predict(img_path, model):
@@ -63,6 +64,7 @@ class VideoCamera(object):
         self.video = cv2.VideoCapture(0)
     def __del__(self):
         self.video.release()
+        os.remove('temp.jpg')
     def get_frame(self):
         ret,img=self.video.read()
         face=face_classifier.detectMultiScale(img,scaleFactor=1.1,minNeighbors=4)
