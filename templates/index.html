@@ -161,7 +161,7 @@ html,body{
 <form action = "{{url_for('predict')}}" enctype="multipart/form-data" method = "POST">
 <div class = "card">
 		<h1 class="line">Mask Detector</h1>
-		<input class="input100"  type="file" id="fileName" accept=".png, .jpg, .jpeg , .jfif" onchange="validateFileType()" name="image_file"/>
+		<input class="input100"  type="file" required id="fileName" accept=".png, .jpg, .jpeg , .jfif" onchange="validateFileType()" name="image_file"/>
 		<script type="text/javascript">
 			function validateFileType(){
 				var fileName = document.getElementById("fileName").value;
@@ -177,7 +177,7 @@ html,body{
 		</script>
 		<span class="focus-input100"></span>
 		</br>
-		<input type="submit" value="Predict!" align="center-right">
+		<input type="submit" value="Predict!"  align="center-right">
 </div>
 </form>
 </br>
