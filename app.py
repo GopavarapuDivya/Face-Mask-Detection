@@ -1,4 +1,3 @@
-import os
 from tensorflow.keras.models import load_model
 import numpy as np
 from flask import Flask, request, send_from_directory,render_template,Response
@@ -33,6 +32,7 @@ def predict():
         filepath=os.path.join(basepath,'upload/',file.filename)
         file.save(filepath)
         livepreds = model_predict(filepath,model)
+        os.remove('./upload/temp.jpg')
         if livepreds==1:
             return render_template('withoutmask.html',filename=filename)
         else:
